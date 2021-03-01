@@ -1,0 +1,23 @@
+<% if logged_in? %>
+<h1><%= current_user.username %></h1>
+<p>Tweet:</p>
+<%= @tweet.content %>
+    <form action="/tweets" method="get">
+    <input type="submit" name="submit" value="All Tweets">
+    </form>
+
+    <form action="/tweets/<%=@tweet.id%>/edit" method="get">
+    <input type="submit" name="submit" value="Edit Tweet">
+    </form>
+    
+    <form action="/tweets/<%=@tweet.id%>" method="POST">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" name="submit" value="Delete Tweet">
+    </form>
+
+
+<% else %>
+    <h1> You Must Be Logged in to Make Tweets </h1>
+    <% end %>
+
+
